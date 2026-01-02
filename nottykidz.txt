@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NOTTY KIDZ School</title>
+
+  <!-- Poppins Professional Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Baloo for Playful Header -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* PLAYFUL HEADER (KEEPING AS IS) */
+    header h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 3em;
+      font-weight: 800;
+      margin: 0;
+      background: linear-gradient(90deg, #ff6b6b, #ffcc00, #4cd137, #00a8ff, #9b59b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bounce 2s infinite ease-in-out, glow 3s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 2px #fff); }
+      100% { filter: drop-shadow(0 0 10px #ffe066); }
+    }
+
+    /* FORMAL HEADINGS (NO GRADIENT) */
+    h2, h3, p {
+      font-family: 'Poppins', sans-serif;
+      color: #2c3e50;
+      text-align: center;
+      margin: 10px 0;
+      background: none;
+      -webkit-text-fill-color: #2c3e50;
+      animation: none;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: #333;
+      border: 10px solid;
+      border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* TIME-BASED BACKGROUND */
+    body.morning { background: linear-gradient(#fff7d1, #ffe9a3); }
+    body.afternoon { background: linear-gradient(#d4f7ff, #aee6ff); }
+    body.evening { background: linear-gradient(#ffd6e7, #ffb3c6); }
+    body.night { background: linear-gradient(#1a1a2e, #16213e); color: #fff; }
+
+    /* FLOATING ITEMS */
+    .floating-item {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.9;
+      animation: floatDown linear infinite;
+      top: -150px;
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(-120vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* ALERT BANNER */
+    .alert-banner {
+      background: linear-gradient(90deg, #ff0000, #ff9900, #ff0000);
+      color: #fff;
+      padding: 12px 20px;
+      text-align: center;
+      font-size: 1.1em;
+      font-weight: bold;
+      animation: flash 1.5s infinite linear;
+      position: relative;
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .alert-close {
+      position: absolute;
+      right: 15px;
+      top: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* HEADER */
+    header {
+      background: #E8D7FF;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .thiru-img {
+      width: 90px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    /* NAVBAR */
+    nav {
+      background: #ffda79;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      padding: 8px 10px;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+      background: #e0f7ff;
+      color: #000;
+    }
+
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* FORMAL CARD STYLE */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 25px;
+      max-width: 320px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      color: #333;
+      text-align: left;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .card p, .card li {
+      font-size: 0.95em;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* MAP BOX MATCHING CONTACT BOX */
+    .map-box {
+      background: #fff;
+      padding: 20px;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-sizing: border-box;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* CONTACT + MAP SECTION */
+    .contact-map-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px 20px;
+      background: #fef9e7;
+      border-top: 3px solid #ff914d;
+      border-bottom: 3px solid #ff914d;
+    }
+
+    .contact-box {
+      background: #fff;
+      padding: 20px;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9em;
+    }
+
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown button styled like nav links */
+    .dropbtn {
+      background: transparent;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding: 8px 10px;
+      cursor: pointer;
+      color: #333;
+      font-size: 1em;
+      display: inline-block;
+    }
+
+    .dropbtn:focus {
+      outline: none;
+    }
+
+    /* Dropdown content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 160px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      z-index: 10;
+      text-align: left;
+    }
+
+    /* Dropdown links */
+    .dropdown-content a {
+      color: #333;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95em;
+    }
+
+    .dropdown-content a:hover {
+      background: #ffefc2;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Highlight button on hover */
+    .dropdown:hover .dropbtn {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="floating-shapes"></div>
+
+<header>
+  <img src="thiruvalluvar.png" class="thiru-img">
+  <h1>NOTTY KIDZ</h1>
+  <p>Play, Learn, and Fly Together!!!</p>
+  <h3>( GOVT RECOGNIZED INSTITUTE )</h3>
+  <h2>( கற்க கசடறக் கற்பவை கற்றபின் நிற்க அதற்குத் தக. )</h2>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#programs">Programs</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Gallery ▼</button>
+    <div class="dropdown-content">
+        <a href="https://www.youtube.com/watch?v=fD7o0fmolak&list=PLjdlf1lGhXx8w9Q3x7pnE5vdsK2xq0SJj" target="_blank">2024</a>
+    </div>
+  </div>
+
+  <a href="#admissions">Admissions</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="alert-banner" id="alertBanner">
+  🎉 Admissions Open for 2025–26! | Watch Annual Day LIVE:
+  <a href="#" style="color:#fff;text-decoration:underline;">Click Here</a>
+  <span class="alert-close" onclick="document.getElementById('alertBanner').style.display='none'">×</span>
+</div>
+
+<section class="hero" id="about">
+  <h2>About Us</h2>
+  <p>
+    NOTTY KIDZ is a professionally managed early childhood learning center committed to providing 
+    a safe, structured, and nurturing environment for young learners. Our curriculum integrates 
+    play‑based learning with foundational academic skills, ensuring holistic development in 
+    communication, creativity, social behavior, and cognitive growth.
+  </p>
+  <p>
+    With qualified educators, well‑designed learning spaces, and a child‑centered approach, 
+    we aim to build strong foundations that prepare children for future academic success.
+  </p>
+</section>
+
+<section class="sections">
+  <div class="card" id="programs">
+    <h3>Our Programs</h3>
+    <p>
+      Our programs are designed to support age‑appropriate development and provide a balanced 
+      combination of academic readiness, social skills, and creative expression.
+    </p>
+    <ul>
+      <li><strong>Playgroup (2–3 years):</strong> Sensory exploration, motor skills, and social interaction.</li>
+      <li><strong>Pre‑KG (3–4 years):</strong> Early literacy, numeracy, and structured play.</li>
+      <li><strong>LKG (4–5 years):</strong> Phonics, writing readiness, and foundational mathematics.</li>
+      <li><strong>UKG (5–6 years):</strong> Reading fluency, problem‑solving, and school preparedness.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Why Choose Us</h3>
+    <ul>
+      <li>Qualified and experienced educators</li>
+      <li>Safe, hygienic, and child‑friendly campus</li>
+      <li>Activity‑based and experiential learning</li>
+      <li>Individual attention and progress monitoring</li>
+      <li>Balanced curriculum with academics, arts, and physical development</li>
+    </ul>
+  </div>
+
+  <div class="card" id="admissions">
+    <h3>Admissions</h3>
+    <p>
+      Admissions for the academic year 2025–26 are now open. Parents are invited to visit the 
+      school, interact with our faculty, and understand our curriculum and learning environment.
+    </p>
+    <p><strong>Documents Required:</strong></p>
+    <ul>
+      <li>Birth Certificate</li>
+      <li>Passport‑size photographs</li>
+      <li>Address proof</li>
+    </ul>
+    <p>
+      For admission inquiries or to schedule a school visit, please contact our office.
+    </p>
+  </div>
+</section>
+
+<section class="contact-map-section" id="contact">
+  <div class="contact-box">
+    <h2>Contact Us</h2>
+    <p><strong>NOTTY KIDZ</strong></p>
+    <p>Chengalpet, Tamil Nadu</p>
+    <p><strong>Phone:</strong> +91-9952228633</p>
+    <p><strong>Email:</strong> info@nottykidz.com</p>
+    <p><strong>Timings:</strong> Mon–Fri, 9 AM – 6 PM</p>
+  </div>
+
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15556.14599622666!2d80.005452!3d12.675561!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQwJzMyLjAiTiA4MMKwMDAnMTkuNiJF!5e0!3m2!1sen!2sin!4v1707055555000"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025–2026 NOTTY KIDZ. All rights reserved.</p>
+</footer>
+
+<script>
+  /* TIME-BASED BACKGROUND */
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 12) document.body.classList.add("morning");
+  else if (hour >= 12 && hour < 17) document.body.classList.add("afternoon");
+  else if (hour >= 17 && hour < 20) document.body.classList.add("evening");
+  else document.body.classList.add("night");
+
+  /* FLOATING IMAGES */
+  const floatingImages = [
+    "balloon.png", "star.png", "bus.png", "tamil1.png", "tamil2.png",
+    "num2.png", "num3.png",
+    "tom.png", "unicorn.png", "ABC.png", "bunny.png",
+    "dolphin.png", "insect.png", "Math.png"
+  ];
+
+  function createFloatingItem() {
+    const item = document.createElement("img");
+    const img = floatingImages[Math.floor(Math.random() * floatingImages.length)];
+    item.src = img;
+    item.classList.add("floating-item");
+
+    if (img.includes("star")) item.classList.add("sparkle");
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.width = (40 + Math.random() * 80) + "px";
+    item.style.animationDuration = (8 + Math.random() * 10) + "s";
+
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 15000);
+  }
+
+  setInterval(createFloatingItem, 1200);
+</script>
+
+</body>
+</html>
